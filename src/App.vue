@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div id="nav">
-
+  dfdf
     </div>
     <router-view/>
   </div>
