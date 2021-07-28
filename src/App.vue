@@ -1,11 +1,20 @@
 <template>
   <div id="app">
-    <div id="navdfdf">main测试23-inventory
-    </div>
+      <Nav></Nav>
     <router-view/>
   </div>
 </template>
 
-<style lang="scss">
+<script>
+import Nav from './components/Nav.vue'
+  export default {
+    name: 'App',
+    components: {
+      Nav
+    }
+  }
+</script>
 
+<style lang="scss">
+  
 </style>
