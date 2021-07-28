@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div id="nav">
-  dfdf
+      <div>首页测试</div>
     </div>
     <router-view/>
   </div>
