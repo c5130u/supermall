@@ -15,6 +15,7 @@ import Nav from './components/Nav.vue'
   }
 </script>
 
-<style lang="scss">
+<style lang="scss" scope>
+  @import "./assets/css/base.css";
   
 </style>
