@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div id="navdfdf">main测试23
+    <div id="navdfdf">main测试23-inventory
     </div>
     <router-view/>
   </div>
