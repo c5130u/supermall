@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div id="navdfdf">大幅度
+    <div id="navdfdf">分支inventory测试
     </div>
     <router-view/>
   </div>
