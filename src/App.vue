@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Nav from './components/Nav.vue'
+import Nav from 'components/Nav.vue'
   export default {
     name: 'App',
     components: {
@@ -16,6 +16,6 @@ import Nav from './components/Nav.vue'
 </script>
 
 <style lang="scss" scope>
-  @import "./assets/css/base.css";
+  @import "assets/css/base.css";
   
 </style>
