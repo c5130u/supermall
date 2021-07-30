@@ -60,7 +60,7 @@ import TabBarItem from 'components/common/tabbar/TabBarItem.vue';
         }
     }
 </script>
-<style lang="scss" scope>
+<style scope>
   
 </style>
   
