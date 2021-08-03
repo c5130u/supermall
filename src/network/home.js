@@ -7,12 +7,13 @@ export function getHomeMultiData() {
   })
 }
 
-// export function getHomeGoods(type, page) {
-//   return request({
-//     url: '/home/data',
-//     params: {
-//       type,
-//       page,
-//     }
-//   })
-// }
+//首页流行，精选，新款数据
+export function getHomeGoodsData(type, page){
+  return request({
+    url: '/home/data',
+    params: {
+      type,
+      page
+    }
+  })
+}
