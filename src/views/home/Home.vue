@@ -5,17 +5,21 @@
                 <div>购物街</div>
             </template>
         </nav-bar>
-        <home-swiper :banners="banners"></home-swiper>
-        <home-recommend :recommends="recommends"></home-recommend>
-        <feature-view></feature-view>        
-        <tab-control
-            :titles="['流行','新款','精选']"
-            @tabClick="tabClick"
-        ></tab-control>
-        <good-detail
-            :goods="goods[curType].list"
-        ></good-detail>
-        <div style="height: 900px"></div>
+        <div class="HomeScroll">
+            <better-scroll>
+                <home-swiper :banners="banners"></home-swiper>
+                <home-recommend :recommends="recommends"></home-recommend>
+                <feature-view></feature-view>        
+                <tab-control
+                    :titles="['流行','新款','精选']"
+                    @tabClick="tabClick"
+                ></tab-control>
+                
+                <good-detail
+                    :goods="goods[curType].list"
+                ></good-detail>
+            </better-scroll>
+        </div>
     </div>
 </template>
 <script>
@@ -27,6 +31,7 @@ import FeatureView from './childProps/Feature.vue'
 import {getHomeMultiData, getHomeGoodsData} from 'network/home.js'
 import TabControl from 'components/content/tabControl/TabControl.vue'
 import GoodDetail from 'components/content/goods/GoodDetail.vue'
+import BetterScroll from 'components/common/scroll/BetterScroll.vue'
 
     export default {
         name: 'Home',
@@ -36,7 +41,8 @@ import GoodDetail from 'components/content/goods/GoodDetail.vue'
             HomeRecommend,
             FeatureView,
             TabControl,
-            GoodDetail
+            GoodDetail,
+            BetterScroll
         },
         data(){
             return {
@@ -47,7 +53,8 @@ import GoodDetail from 'components/content/goods/GoodDetail.vue'
                     'new': { page: 0, list: [60] },
                     'sell': { page: 0, list: [60] }
                 },
-                curType: 'pop'
+                curType: 'pop',
+                scroll: null
             }
         },
         created(){
@@ -87,7 +94,6 @@ import GoodDetail from 'components/content/goods/GoodDetail.vue'
                     default:
                         break;
                 }
-                console.log(this.curType)
             }
         }
     }
@@ -106,6 +112,15 @@ import GoodDetail from 'components/content/goods/GoodDetail.vue'
         right: 0;
         width: 100%;
         z-index: 9999
+    }
+    .HomeScroll .wrapper {
+        position: absolute;
+        top: 44px;
+        bottom: 49px;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        overflow: hidden;
     }
 </style>
   

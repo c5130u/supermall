@@ -39,6 +39,7 @@
         position: sticky;
         top: 44px;
         background-color: #fff;
+        z-index: 1000
     }
     .tab-control ul {
         display: flex;

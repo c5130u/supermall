@@ -19,6 +19,7 @@
     background-color: #efefef;
     border-top: 1px solid #ababab;
     display: flex;
+    z-index: 100000
   }    
 </style>
   
