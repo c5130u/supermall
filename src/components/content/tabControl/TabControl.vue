@@ -29,6 +29,7 @@
         methods: {
             tabControlClick(index){
                 this.curIndex = index
+                console.log(index)
                 this.$emit('tabClick', index)
             }
         }

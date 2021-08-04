@@ -6,7 +6,7 @@
             </template>
         </nav-bar>
         <div class="HomeScroll">
-            <better-scroll>
+            <better-scroll ref="scrollNew">
                 <home-swiper :banners="banners"></home-swiper>
                 <home-recommend :recommends="recommends"></home-recommend>
                 <feature-view></feature-view>        
@@ -19,6 +19,7 @@
                     :goods="goods[curType].list"
                 ></good-detail>
             </better-scroll>
+            <back-top @click.native="clickBackTopBtn"></back-top>
         </div>
     </div>
 </template>
@@ -32,6 +33,7 @@ import {getHomeMultiData, getHomeGoodsData} from 'network/home.js'
 import TabControl from 'components/content/tabControl/TabControl.vue'
 import GoodDetail from 'components/content/goods/GoodDetail.vue'
 import BetterScroll from 'components/common/scroll/BetterScroll.vue'
+import BackTop from 'components/common/backTop/BackTop.vue'
 
     export default {
         name: 'Home',
@@ -42,7 +44,8 @@ import BetterScroll from 'components/common/scroll/BetterScroll.vue'
             FeatureView,
             TabControl,
             GoodDetail,
-            BetterScroll
+            BetterScroll,
+            BackTop
         },
         data(){
             return {
@@ -78,7 +81,6 @@ import BetterScroll from 'components/common/scroll/BetterScroll.vue'
                     this.goods[type].list.push(...res.data.list)
                     this.goods[type].page += 1
                 })
-
             },
             tabClick(index){
                 switch (index) {
@@ -94,6 +96,9 @@ import BetterScroll from 'components/common/scroll/BetterScroll.vue'
                     default:
                         break;
                 }
+            },
+            clickBackTopBtn() {
+                this.$refs.scrollNew.scrollTo(0, 0, 300);                  
             }
         }
     }

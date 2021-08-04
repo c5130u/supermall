@@ -16,11 +16,17 @@ import BScroll from 'better-scroll'
             }
         },
         mounted() {
-            // this.$nextTick(() => {
-            //     new BScroll(this.$refs.wrapper, {})
-            // })
-            new BScroll(this.$refs.wrapper, {})
+            this.scroll = new BScroll(this.$refs.wrapper, {  // eslint-disable-line no-unused-vars
+                click: true,
+                tap: true,
+                probeType: 3
+            })
         },
+        methods: {
+            scrollTo(x, y, time) {
+                return this.scroll.scrollTo(x, y, time)
+            }
+        }
     }
 </script>
 <style scope>
