@@ -6,7 +6,13 @@
             </template>
         </nav-bar>
         <div class="HomeScroll">
-            <better-scroll ref="scrollNew">
+            <better-scroll
+                ref="scrollNew"
+                :probe-type="3"
+                @scroll="scrollPos"
+                :pull-up-load="true"
+                @pullingUp="pullingUpData"
+            >
                 <home-swiper :banners="banners"></home-swiper>
                 <home-recommend :recommends="recommends"></home-recommend>
                 <feature-view></feature-view>        
@@ -19,7 +25,7 @@
                     :goods="goods[curType].list"
                 ></good-detail>
             </better-scroll>
-            <back-top @click.native="clickBackTopBtn"></back-top>
+            <back-top @click.native="clickBackTopBtn" v-if="isShowTapBtn"></back-top>
         </div>
     </div>
 </template>
@@ -30,6 +36,8 @@ import HomeRecommend from './childProps/HomeRecommend.vue'
 import FeatureView from './childProps/Feature.vue'
 
 import {getHomeMultiData, getHomeGoodsData} from 'network/home.js'
+import { debounce } from 'common/js/utils.js'
+
 import TabControl from 'components/content/tabControl/TabControl.vue'
 import GoodDetail from 'components/content/goods/GoodDetail.vue'
 import BetterScroll from 'components/common/scroll/BetterScroll.vue'
@@ -57,18 +65,27 @@ import BackTop from 'components/common/backTop/BackTop.vue'
                     'sell': { page: 0, list: [60] }
                 },
                 curType: 'pop',
-                scroll: null
+                scroll: null,
+                isShowTapBtn: false
             }
         },
         created(){
+
             this.getHomeMultidataM()
 
             //请求商品数据
             this.getHomeGoodsDataF('pop')
             this.getHomeGoodsDataF('new')
             this.getHomeGoodsDataF('sell')
+
         },
-        methods: {
+        mounted() {
+            const refreshNew = debounce(this.$refs.scrollNew.refresh, 50)
+            this.$bus.$on('itemImgLoad', () => {    
+                refreshNew()
+            })            
+        },
+        methods: {            
             getHomeMultidataM(){
                 getHomeMultiData().then(res => {
                     this.banners = res.data.banner.list; 
@@ -80,6 +97,7 @@ import BackTop from 'components/common/backTop/BackTop.vue'
                 getHomeGoodsData(type, page).then(res => {
                     this.goods[type].list.push(...res.data.list)
                     this.goods[type].page += 1
+                    this.$refs.scrollNew.finishPullUp()
                 })
             },
             tabClick(index){
@@ -98,7 +116,13 @@ import BackTop from 'components/common/backTop/BackTop.vue'
                 }
             },
             clickBackTopBtn() {
-                this.$refs.scrollNew.scrollTo(0, 0, 300);                  
+                this.$refs.scrollNew.scrollTo(0, 0, 300);
+            },
+            scrollPos(position){
+                this.isShowTapBtn = (-position.y) > 1000
+            },
+            pullingUpData(){
+                this.getHomeGoodsDataF(this.curType)   
             }
         }
     }

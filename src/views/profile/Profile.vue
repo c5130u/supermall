@@ -1,15 +1,169 @@
 <template>
     <div>
         我是我的页
+        <div class="ProfileScroll" :probe-type="3">
+            <better-scroll>
+                <ul>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                    <li>我是我的页</li>
+                </ul>
+            </better-scroll>
+        </div>
     </div>
 </template>
 <script>
+import BetterScroll from 'components/common/scroll/BetterScroll.vue'
     export default {
+        components: { BetterScroll },
         name: 'Profile'
-  
+
     }
 </script>
-<style lang="scss" scope>
-  
+<style scope>
+    .ProfileScroll .wrapper {
+        position: absolute;
+        top: 44px;
+        bottom: 49px;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        overflow: hidden;
+    }
 </style>
   
