@@ -21,20 +21,32 @@
                 </div>
             </template>
         </nav-bar>
+        <detail-swiper
+            name="GoodDetail"
+            :detail-banners="detailBanners"
+            heightVal="300px"
+        ></detail-swiper>
     </div>
 </template>
 <script>
 import NavBar from 'components/common/navbar/NavBar.vue'
+
+import DetailSwiper from './childProps/DetailSwiper.vue'
+
+import {getGoodDetailData} from 'network/detail.js'
+
     export default {
         name: 'GoodDetail',
         data() {
             return {
                 titles: ['商品', '参数', '评论', '推荐'],
-                curIndex: 0
+                curIndex: 0,
+                detailBanners: []
             }
         },
         components: {
-            NavBar
+            NavBar,
+            DetailSwiper
         },
         methods: {
             goodDetailNav(index){
@@ -44,6 +56,15 @@ import NavBar from 'components/common/navbar/NavBar.vue'
                 this.$router.go(-1)
             }
         },
+        created(){
+            this.iid = this.$route.params.iid;
+            getGoodDetailData(this.iid).then( (res) => {
+                //轮播数据
+                this.detailBanners = res.result.itemInfo.topImages
+                console.log(this.detailBanners)
+            })
+            
+        }
     }
 </script>
 <style scope>
