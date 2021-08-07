@@ -33,9 +33,7 @@ import BScroll from 'better-scroll'
                 click: true,
                 tap: true,
                 probeType: this.probeType,
-                pullUpLoad: {
-                    threshold: -70
-                }
+                pullUpLoad: this.pullUpLoad
             })
 
             //监听滚动条位置
@@ -44,9 +42,18 @@ import BScroll from 'better-scroll'
             })
 
             //监听上拉加载
-            this.scroll.on('pullingUp',()=>{
-                this.$emit('pullingUp')
-            })
+            if(this.probeType == 2 || this.probeType == 3){
+                this.scroll.on('pullingUp',()=>{
+                    this.$emit('scroll2')
+                })
+            }
+
+            //监听是否滚动到底部
+            if(this.pullUpLoad) {
+                this.scroll.on('pullingUp', () => {
+                    this.$emit('pullingUp')
+                })
+            }
         },
         methods: {
             scrollTo(x, y, time) {
@@ -56,7 +63,6 @@ import BScroll from 'better-scroll'
                 this.scroll.finishPullUp()
             },
             refresh() {
-                console.log(12)
                 this.scroll && this.scroll.refresh();
             }
         }

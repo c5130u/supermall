@@ -29,7 +29,6 @@
         methods: {
             tabControlClick(index){
                 this.curIndex = index
-                console.log(index)
                 this.$emit('tabClick', index)
             }
         }
@@ -37,8 +36,8 @@
 </script>
 <style scope>
     .tab-control {
-        position: sticky;
-        top: 44px;
+        position: relative;
+        top: 0;
         background-color: #fff;
         z-index: 1000
     }

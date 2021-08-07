@@ -6,25 +6,34 @@
             </template>
         </nav-bar>
         <div class="HomeScroll">
+            <tab-control
+                :titles="['流行','新款','精选']"
+                @tabClick="tabClick"
+                ref="tabControl1"
+                class="fixed"
+                v-show="isFixedShow"
+            ></tab-control>
             <better-scroll
                 ref="scrollNew"
                 :probe-type="3"
                 @scroll="scrollPos"
                 :pull-up-load="true"
-                @pullingUp="pullingUpData"
-            >
-                <home-swiper :banners="banners"></home-swiper>
+                @scroll2="pullingUpData"
+                @pullingUp="loadMore"
+            >   
+                <home-swiper :banners="banners" @swiperItemImgLoadFun="swiperItemFun"></home-swiper>
                 <home-recommend :recommends="recommends"></home-recommend>
                 <feature-view></feature-view>        
                 <tab-control
                     :titles="['流行','新款','精选']"
                     @tabClick="tabClick"
-                ></tab-control>
-                
+                    ref="tabControl2"
+                ></tab-control>                
                 <good-detail
                     :goods="goods[curType].list"
                 ></good-detail>
             </better-scroll>
+            <p class="pullUp" v-if="isShowPullUpTxt">上拉加载更多...</p>
             <back-top @click.native="clickBackTopBtn" v-if="isShowTapBtn"></back-top>
         </div>
     </div>
@@ -66,7 +75,13 @@ import BackTop from 'components/common/backTop/BackTop.vue'
                 },
                 curType: 'pop',
                 scroll: null,
-                isShowTapBtn: false
+                isShowTapBtn: false,
+                isShowPullUpTxt: false,
+                tabControlOffsetTop: 0,
+                isFixedShow: false,
+                tabControlIndex: '',
+                curPositionTop: 0,
+                saveY: 0
             }
         },
         created(){
@@ -80,17 +95,18 @@ import BackTop from 'components/common/backTop/BackTop.vue'
 
         },
         mounted() {
+            //图片防抖
             const refreshNew = debounce(this.$refs.scrollNew.refresh, 50)
             this.$bus.$on('itemImgLoad', () => {    
                 refreshNew()
-            })            
+            })   
         },
         methods: {            
             getHomeMultidataM(){
                 getHomeMultiData().then(res => {
                     this.banners = res.data.banner.list; 
                     this.recommends = res.data.recommend.list
-                })
+                });
             },
             getHomeGoodsDataF(type){
                 const page = this.goods[type].page + 1
@@ -98,6 +114,7 @@ import BackTop from 'components/common/backTop/BackTop.vue'
                     this.goods[type].list.push(...res.data.list)
                     this.goods[type].page += 1
                     this.$refs.scrollNew.finishPullUp()
+                    this.isShowPullUpTxt = false
                 })
             },
             tabClick(index){
@@ -114,16 +131,41 @@ import BackTop from 'components/common/backTop/BackTop.vue'
                     default:
                         break;
                 }
+                this.$refs.tabControl2.curIndex = index;
+                this.$refs.tabControl1.curIndex = index;
             },
             clickBackTopBtn() {
                 this.$refs.scrollNew.scrollTo(0, 0, 300);
             },
             scrollPos(position){
-                this.isShowTapBtn = (-position.y) > 1000
+                let positionY = -(position.y)
+                this.curPositionTop = positionY
+                this.isShowTapBtn = positionY > 1000
+                this.isFixedShow = positionY > this.tabControlOffsetTop
             },
             pullingUpData(){
                 this.getHomeGoodsDataF(this.curType)   
+            },
+
+            //下拉加载更多
+            loadMore(){
+                this.isShowPullUpTxt = true
+            },
+            swiperItemFun(){
+                //tab切换部分吸顶功能实现
+                this.tabControlOffsetTop = this.$refs.tabControl2.$el.offsetTop
             }
+        },
+        destroyed(){
+            console.log(12)
+        },
+        activated(){
+            this.$refs.scrollNew.scrollTo(0, -this.saveY, 0)
+            console.log(this.saveY)
+        },
+        deactivated(){
+            this.saveY = this.curPositionTop
+            console.log(this.saveY)
         }
     }
 </script>
@@ -150,6 +192,25 @@ import BackTop from 'components/common/backTop/BackTop.vue'
         right: 0;
         z-index: 1000;
         overflow: hidden;
+    }
+    .pullUp {
+        position: fixed;
+        left: 0;
+        bottom: 54px;
+        text-align: center;
+        right: 0;
+        z-index: 10000000;
+        padding: 4px 0;
+        background-color: rgba(255,255,255,.6);
+    }
+    .fixed {
+        position: fixed;
+        left: 0;
+        top: 44px;
+        right: 0;
+        width: 100%;
+        z-index: 99999999999;
+        background-color: #fff;
     }
 </style>
   

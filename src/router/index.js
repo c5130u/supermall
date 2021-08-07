@@ -5,6 +5,7 @@ const Home = () => import('views/home/Home')
 const Category = () => import('views/category/Category')
 const Shopcart = () => import('views/shopcart/Shopcart')
 const Profile = () => import('views/profile/Profile')
+const GoodDetail = () => import('views/detail/GoodDetail')
 
 const originalPush = VueRouter.prototype.push
 
@@ -34,6 +35,10 @@ const routes = [
   {
     path: '/profile',
     component: Profile
+  },
+  {
+    path: '/gooddetail/:iid',
+    component: GoodDetail
   }
 ]
 
