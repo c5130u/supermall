@@ -27,12 +27,14 @@
             heightVal="300px"
         ></detail-swiper>
         <detail-base-info :goods="goods"></detail-base-info>
+        <detail-shop-info :shop="shop"></detail-shop-info>
     </div>
 </template>
 <script>
 import NavBar from 'components/common/navbar/NavBar.vue'
 import DetailSwiper from './childProps/DetailSwiper.vue'
 import DetailBaseInfo from './childProps/DetailBaseInfo.vue'
+import DetailShopInfo from './childProps/DetailShopInfo.vue'
 
 import {getGoodDetailData, Goods, Shop} from 'network/detail.js'
 
@@ -50,9 +52,10 @@ import {getGoodDetailData, Goods, Shop} from 'network/detail.js'
         components: {
             NavBar,
             DetailSwiper,
-            DetailBaseInfo
+            DetailBaseInfo,
+            DetailShopInfo
         },
-        methods: {
+        methods:{
             goodDetailNav(index){
                 this.curIndex = index
             },
