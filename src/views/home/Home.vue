@@ -29,9 +29,9 @@
                     @tabClick="tabClick"
                     ref="tabControl2"
                 ></tab-control>                
-                <good-detail
+                <good-list
                     :goods="goods[curType].list"
-                ></good-detail>
+                ></good-list>
             </better-scroll>
             <p class="pullUp" v-if="isShowPullUpTxt">上拉加载更多...</p>
             <back-top @click.native="clickBackTopBtn" v-if="isShowTapBtn"></back-top>
@@ -48,7 +48,7 @@ import {getHomeMultiData, getHomeGoodsData} from 'network/home.js'
 import { debounce } from 'common/js/utils.js'
 
 import TabControl from 'components/content/tabControl/TabControl.vue'
-import GoodDetail from 'components/content/goods/GoodDetail.vue'
+import GoodList from 'components/content/goods/GoodList.vue'
 import BetterScroll from 'components/common/scroll/BetterScroll.vue'
 import BackTop from 'components/common/backTop/BackTop.vue'
 
@@ -60,7 +60,7 @@ import BackTop from 'components/common/backTop/BackTop.vue'
             HomeRecommend,
             FeatureView,
             TabControl,
-            GoodDetail,
+            GoodList,
             BetterScroll,
             BackTop
         },
@@ -183,15 +183,6 @@ import BackTop from 'components/common/backTop/BackTop.vue'
         right: 0;
         width: 100%;
         z-index: 9999
-    }
-    .HomeScroll .wrapper {
-        position: absolute;
-        top: 44px;
-        bottom: 49px;
-        left: 0;
-        right: 0;
-        z-index: 1000;
-        overflow: hidden;
     }
     .pullUp {
         position: fixed;

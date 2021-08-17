@@ -1,7 +1,7 @@
 <template>
     <div class="goodDetail">
         <good-item
-            v-for="(item, index) in goods.slice(1)"
+            v-for="(item, index) in goodsList"
             :key="index"
             :goodItem="item"
         >
@@ -11,12 +11,12 @@
 <script>
 import GoodItem from 'components/content/goods/GoodItem.vue';
     export default {
-        name: 'GoodDetail',
+        name: 'GoodNewList',
         components: {
             GoodItem
         },
         props: {
-            goods: {
+            goodsList: {
                 type: Array,
                 default(){
                     return []

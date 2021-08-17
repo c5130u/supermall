@@ -69,6 +69,14 @@ import BScroll from 'better-scroll'
     }
 </script>
 <style scope>
-  
+    .wrapper {
+        position: fixed;
+        top: 44px;
+        bottom: 48px;
+        left: 0;
+        right: 0;
+        overflow: hidden;
+        z-index: 1000;
+    }
 </style>
   

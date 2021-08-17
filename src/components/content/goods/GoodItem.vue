@@ -1,6 +1,6 @@
 <template>
     <div @click="goodDetail">
-        <img :src="goodItem.show && goodItem.show.img" alt="" width="100%" @load="imgLoad">
+        <img :src="showImg" alt="" width="100%" @load="imgLoad">
         <p>{{goodItem.title}}</p>
         <span class="price">￥：{{goodItem.price}}</span>
         <span class="cfav">{{goodItem.cfav}}</span>
@@ -25,6 +25,11 @@
                 this.$router.push('/gooddetail/' + this.goodItem.iid)
             }
         },
+        computed: {
+            showImg(){
+                return this.goodItem.show && this.goodItem.show.img || this.goodItem.image
+            }
+        }
     }
 </script>
 <style scope>

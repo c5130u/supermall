@@ -33,3 +33,20 @@ export class Shop {
         this.goodsCount = shopInfo.cGoods;
     }
 }
+
+//商品参数
+export class GoodParam {
+    constructor(info, rule) {
+        //柱：images可能没有值（有些商品有，有些商品没有）
+        this.image = info.images ? info.images[0] : "";
+        this.infos = info.set;
+        this.sizes = rule.tables;
+    }
+}
+
+//商品详情页商品列表信息
+export function getRecommend() {
+    return request({
+        url: '/recommend'
+    })
+}
